@@ -52,7 +52,7 @@ BWS uses by default a Request Rate Limitation to CreateWallet endpoint. If you n
 ```
 Identity is the Peer-ID, this will identify the peer and its wallet. Signature is the current request signature, using `requestSigningKey`, the `m/1/1` derivative of the Extended Private Key.
 
-See [Bitcore Wallet Client](https://github.com/bitcoinnano/btcnano-wallet-client/blob/master/lib/api.js#L73) for implementation details.
+See [Btcnano Wallet Client](https://github.com/bitcoinnano/btcnano-wallet-client/blob/master/lib/api.js#L73) for implementation details.
 
 
 ## GET Endpoints
