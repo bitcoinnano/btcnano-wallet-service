@@ -2,7 +2,7 @@
   "name": "btcnano-wallet-service",
   "description": "A service for Mutisig HD Btcnano Wallets",
   "author": "Btcnano Inc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "licence": "MIT",
   "keywords": [
     "btcnano",

@@ -13,7 +13,7 @@ Btcnano Wallet Service facilitates multisig HD wallets creation and operation th
 
 BWS can usually be installed within minutes and accommodates all the needed infrastructure for peers in a multisig wallet to communicate and operate – with minimum server trust.
   
-See [Btcnano-wallet-client] (https://github.com/bitcoinnano/btcnano-wallet-client) for the *official* client library that communicates to BWS and verifies its response. Also check [Bitcore-wallet] (https://github.com/btcnano/btcnano-wallet) for a simple CLI wallet implementation that relays on BWS.
+See [Btcnano-wallet-client] (https://github.com/bitcoinnano/btcnano-wallet-client) for the *official* client library that communicates to BWS and verifies its response. Also check [Bitcore-wallet] (https://github.com/bitpay/bitcore-wallet) for a simple CLI wallet implementation that relays on BWS.
 
 BWS is been used in production enviroments for [Copay Wallet](https://copay.io), [Bitpay App wallet](https://bitpay.com/wallet) and others.  
 
@@ -29,7 +29,7 @@ This will launch the BWS service (with default settings) at `http://localhost:32
 
 BWS needs mongoDB. You can configure the connection at `config.js`
 
-BWS supports SSL and Clustering. For a detailed guide on installing BWS with extra features see [Installing BWS](https://github.com/bitcoinnano/bitcore-wallet-service/blob/master/installation.md). 
+BWS supports SSL and Clustering. For a detailed guide on installing BWS with extra features see [Installing BWS](https://github.com/bitcoinnano/btcnano-wallet-service/blob/master/installation.md). 
 
 BWS uses by default a Request Rate Limitation to CreateWallet endpoint. If you need to modify it, check defaults.js' `Defaults.RateLimit`
 
@@ -52,7 +52,7 @@ BWS uses by default a Request Rate Limitation to CreateWallet endpoint. If you n
 ```
 Identity is the Peer-ID, this will identify the peer and its wallet. Signature is the current request signature, using `requestSigningKey`, the `m/1/1` derivative of the Extended Private Key.
 
-See [Bitcore Wallet Client](https://github.com/bitcoinnano/btcnano-wallet-client/blob/master/lib/api.js#L73) for implementation details.
+See [Btcnano Wallet Client](https://github.com/bitcoinnano/btcnano-wallet-client/blob/master/lib/api.js#L73) for implementation details.
 
 
 ## GET Endpoints
