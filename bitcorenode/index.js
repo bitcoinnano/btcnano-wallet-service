@@ -87,9 +87,9 @@ Service.prototype._getConfiguration = function() {
   // A bitcore-node is either livenet or testnet, so we'll pass
   // the configuration options to communicate via the local running
   // instance of the insight-api service.
-  if (self.node.network === Networks.livenet) {
+  if (self.node.network === Networks.main) {
     baseConfig.blockchainExplorerOpts = {
-      livenet: providerOptions
+      main: providerOptions
     };
   } else if (self.node.network === Networks.testnet) {
     baseConfig.blockchainExplorerOpts = {

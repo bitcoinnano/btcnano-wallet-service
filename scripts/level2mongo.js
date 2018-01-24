@@ -10,6 +10,7 @@ var level = new LevelStorage({
 
 var mongo = new MongoStorage();
 mongo.connect({
+    // nmarley TODO: Again, pull this from config. Do not hard-code values.
     mongoDb: {
       uri: 'mongodb://localhost:27017/bws',
     }

@@ -350,7 +350,7 @@ describe('Push notifications', function() {
       helpers.stubUtxos(server, wallet, 1, function() {
         var txOpts = {
           outputs: [{
-            toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+            toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
             amount: 0.8e8
           }],
           feePerKb: 100e2
@@ -395,7 +395,7 @@ describe('Push notifications', function() {
       helpers.stubUtxos(server, wallet, 1, function() {
         var txOpts = {
           outputs: [{
-            toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+            toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
             amount: 0.8e8
           }],
           feePerKb: 100e2
@@ -520,7 +520,7 @@ describe('Push notifications', function() {
           var args = _.filter(_.map(calls, function(call) {
             return call.args[0];
           }), function(arg) {
-            return arg.body.notification.title == 'New copayer';
+            return arg.body.notification.title == 'New copayer' || arg.body.notification.title == 'New copayer\r';
           });
 
           server.getWallet(null, function(err, wallet) {

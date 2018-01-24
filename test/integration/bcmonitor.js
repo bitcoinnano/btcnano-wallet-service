@@ -50,7 +50,7 @@ describe('Blockchain monitor', function() {
           storage: storage,
           blockchainExplorers: {
             'testnet': blockchainExplorer,
-            'livenet': blockchainExplorer
+            'main': blockchainExplorer
           },
         }, function(err) {
           should.not.exist(err);

@@ -1,12 +1,12 @@
 var config = {
   basePath: '/bws/api',
   disableLogs: false,
-  port: 3232, 
+  port: 3232,
 
   // Uncomment to make BWS a forking server
   // cluster: true,
 
-  // Uncomment to set the number or process (will use the nr of availalbe CPUs by default)
+  // Uncomment to set the number or process (will use the # of available CPUs by default)
   // clusterInstances: 4,
 
   // https: true,
@@ -38,11 +38,18 @@ var config = {
     },
   },
   blockchainExplorerOpts: {
-    livenet: {
+    main: {
       provider: 'insight',
-      url: ' http://explorer.btcnano.org/',
+      url: 'http://explorer.btcnano.org',
+      apiPrefix:'/api'
     },
-      },
+    testnet: {
+      provider: 'insight',
+      url: 'http://explorer_cn.btcnano.org/',
+      apiPrefix:'/api'
+
+    },
+  },
   pushNotificationsOpts: {
     templatePath: './lib/templates',
     defaultLanguage: 'en',

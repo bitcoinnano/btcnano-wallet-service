@@ -14,7 +14,7 @@ describe('TxProposal', function() {
       should.exist(txp);
       txp.outputs.length.should.equal(2);
       txp.amount.should.equal(30000000);
-      txp.network.should.equal('livenet');
+      txp.network.should.equal('main');
     });
   });
 
@@ -63,10 +63,10 @@ describe('TxProposal', function() {
   describe('#sign', function() {
     it('should sign 2-2', function() {
       var txp = TxProposal.fromObj(aTXP());
-      txp.sign('1', theSignatures, theXPub);
+      txp.sign('1', theSignatures2, theXPub2);
       txp.isAccepted().should.equal(false);
       txp.isRejected().should.equal(false);
-      txp.sign('2', theSignatures, theXPub);
+      txp.sign('2', theSignatures2, theXPub2);
       txp.isAccepted().should.equal(true);
       txp.isRejected().should.equal(false);
     });
@@ -75,7 +75,8 @@ describe('TxProposal', function() {
   describe('#getRawTx', function() {
     it('should generate correct raw transaction for signed 2-2', function() {
       var txp = TxProposal.fromObj(aTXP());
-      txp.sign('1', theSignatures, theXPub);
+      txp.sign('1', theSignatures1, theXPub1);
+      txp.sign('2', theSignatures2, theXPub2);
       txp.getRawTx().should.equal(theRawTx);
     });
   });
@@ -92,7 +93,7 @@ describe('TxProposal', function() {
   describe('#reject & #sign', function() {
     it('should finally reject', function() {
       var txp = TxProposal.fromObj(aTXP());
-      txp.sign('1', theSignatures);
+      txp.sign('1', theSignatures2);
       txp.isAccepted().should.equal(false);
       txp.isRejected().should.equal(false);
       txp.reject('2');
@@ -103,21 +104,23 @@ describe('TxProposal', function() {
 
 });
 
-var theXPriv = 'xprv9s21ZrQH143K2rMHbXTJmWTuFx6ssqn1vyRoZqPkCXYchBSkp5ey8kMJe84sxfXq5uChWH4gk94rWbXZt2opN9kg4ufKGvUM7HQSLjnoh7e';
-var theXPub = 'xpub661MyMwAqRbcFLRkhYzK8eQdoywNHJVsJCMQNDoMks5bZymuMcyDgYfnVQYq2Q9npnVmdTAthYGc3N3uxm5sEdnTpSqBc4YYTAhNnoSxCm9';
-var theSignatures = ['304402201d210f731fa8cb8473ce49554382ad5d950c963d48b173a0591f13ed8cee10ce022027b30dc3a55c46b1f977a72491d338fc14b6d13a7b1a7c5a35950d8543c1ced6'];
-var theRawTx = '0100000001ab069f7073be9b491bb1ad4233a45d2e383082ccc7206df905662d6d8499e66e08000000910047304402201d210f731fa8cb8473ce49554382ad5d950c963d48b173a0591f13ed8cee10ce022027b30dc3a55c46b1f977a72491d338fc14b6d13a7b1a7c5a35950d8543c1ced6014752210319008ffe1b3e208f5ebed8f46495c056763f87b07930a7027a92ee477fb0cb0f2103b5f035af8be40d0db5abb306b7754949ab39032cf99ad177691753b37d10130152aeffffffff0380969800000000001976a91451224bca38efcaa31d5340917c3f3f713b8b20e488ac002d3101000000001976a91451224bca38efcaa31d5340917c3f3f713b8b20e488ac70f62b040000000017a914778192003f0e9e1d865c082179cc3dae5464b03d8700000000';
-
+var theXPriv1 = 'tprv8ZgxMBicQKsPeHCsHwzRrTjL6HMsS7rozDWtQvCYNjuDBjgFQJTUKrfjPmj8gDmLa2tH7ZSc4Z4e8xLAP7Cy49v2EiW3mJpqkuxA2gSAUNA';
+var theXPub1 = 'tpubDDTaaaSM1Ga2NKTdr8i3NYRanNsQga3q57pfNrRNB8hqz7RMvSiQohu38HNEmSFWiPHbuPNbvKYfSWQZFTfAhxYy1icWwVVvxAjNeWpubwS';
+var theSignatures1 = ['304502210089951aa097679be899866973826b1402f08efc10ba38a169a6262a6b17b0dab302206f5a2d840b225137503596f6350929fe7b36897dddcb3cf55e7defb2410be6bf'];
+var theXPriv2 = 'tprv8ZgxMBicQKsPdELFtySdCVwuwQnN1xmvDZ67S5TQCSBNPeGWgju8XxSBotbbfkmvDEvCsDrBuUjye4iTLANwRze8auAZ1raBxnduHPASf5Z';
+var theXPub2 = 'tpubDDb5nCWVNuPEbm9ztztimbb5PfZQmMJx4d1r4WaXfkTeTu6kVfToQL2CK5sGgyNPRcr9SmisQTe8kcd2jEh74i4N2UqfGthYvZgTkfRczFX';
+var theSignatures2 = ['3045022100da1d7e668ca6da193a56dcad9fc65c968b754519b0844fd59a3be2cf003de9a50220025bd2d1f7dedff569e0ac3e685eea999d2cfb7378a6483c3233cdb4110fb68c'];
+var theRawTx = '01000000013768fb3473c0f10758abc1fda4ef8c54f059003f2d448968c0ad804c4dcf0b4800000000db00483045022100da1d7e668ca6da193a56dcad9fc65c968b754519b0844fd59a3be2cf003de9a50220025bd2d1f7dedff569e0ac3e685eea999d2cfb7378a6483c3233cdb4110fb68c0148304502210089951aa097679be899866973826b1402f08efc10ba38a169a6262a6b17b0dab302206f5a2d840b225137503596f6350929fe7b36897dddcb3cf55e7defb2410be6bf01475221029153fd3f81a098634e7439fe7acf18a0464b6518fbf693b4c9f17b599a079ad82103f39e325ed77e2a95986f595042b8b3208382d1e74ea5b24831c67280a21ace6752aeffffffff0380969800000000001976a914f4d7feb11bc143018d55a463e3690703a9d9352188ac002d3101000000001976a914f4d7feb11bc143018d55a463e3690703a9d9352188acd0e6e2441700000017a91403d4b30b14cafa3047955b2764586d40b105733c8700000000';
 var aTxpOpts = function(type) {
   var opts = {
     message: 'some message'
   };
   opts.outputs = [{
-    toAddress: "18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7",
+    toAddress: "XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD",
     amount: 10000000,
     message: "first message"
   }, {
-    toAddress: "18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7",
+    toAddress: "XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD",
     amount: 20000000,
     message: "second message"
   }, ];
@@ -128,47 +131,46 @@ var aTxpOpts = function(type) {
 var aTXP = function(type) {
   var txp = {
     "version": 3,
-    "createdOn": 1423146231,
-    "id": "75c34f49-1ed6-255f-e9fd-0c71ae75ed1e",
-    "walletId": "1",
-    "creatorId": "1",
-    "network": "livenet",
+    "createdOn": 1475385140,
+    "id": "fbb49acc-ca2b-43ff-a4a5-670dcfcd3653",
+    "walletId": "31b6260b-61d8-4df6-84de-8c3eebd87fe5",
+    "creatorId": "c239da924f98a90a804330ff7d021a1413a02c8e2effb8c65b7860e365068a72",
+    "network": "testnet",
     "amount": 30000000,
     "message": 'some message',
-    "proposalSignature": '7035022100896aeb8db75fec22fddb5facf791927a996eb3aee23ee6deaa15471ea46047de02204c0c33f42a9d3ff93d62738712a8c8a5ecd21b45393fdd144e7b01b5a186f1f9',
+    "proposalSignature": '304402201cf9f446d9d0cbcf075186ce1df2ac0e25a1f76a939518f2e0e365eefd729c4602203503fb852619d62697624d42960f2c03784cd2d47a7a8005e44c937ffab09600',
     "changeAddress": {
       "version": '1.0.0',
-      "createdOn": 1424372337,
-      "address": '3CauZ5JUFfmSAx2yANvCRoNXccZ3YSUjXH',
-      "path": 'm/2147483647/1/0',
-      "publicKeys": ['030562cb099e6043dc499eb359dd97c9d500a3586498e4bcf0228a178cc20e6f16',
-        '0367027d17dbdfc27b5e31f8ed70e14d47949f0fa392261e977db0851c8b0d6fac',
-        '0315ae1e8aa866794ae603389fb2b8549153ebf04e7cdf74501dadde5c75ddad11'
+      "createdOn": 1475385139,
+      "address": '8emiYFa4FG2CrY2YKbdbUNdWV2EEtw3swq',
+      "path": 'm/1/9',
+      "publicKeys": ['0297e50b5db89d18f1115e2c35b3c101ac2812658ba95a1a84fe2505b52a0aa655',
+        '02406072e42e4f03940de60ad3386ed243d718f8ae0e5ae8a28d6418be95034f3a'
       ]
     },
     "inputs": [{
-      "txid": "6ee699846d2d6605f96d20c7cc8230382e5da43342adb11b499bbe73709f06ab",
-      "vout": 8,
-      "satoshis": 100000000,
-      "scriptPubKey": "a914a8a9648754fbda1b6c208ac9d4e252075447f36887",
-      "address": "3H4pNP6J4PW4NnvdrTg37VvZ7h2QWuAwtA",
-      "path": "m/2147483647/0/1",
-      "publicKeys": ["0319008ffe1b3e208f5ebed8f46495c056763f87b07930a7027a92ee477fb0cb0f", "03b5f035af8be40d0db5abb306b7754949ab39032cf99ad177691753b37d101301"]
+      "txid": "480bcf4d4c80adc06889442d3f0059f0548cefa4fdc1ab5807f1c07334fb6837",
+      "vout": 0,
+      "satoshis": 99969984360,
+      "scriptPubKey": "a91422cece6b0e08688ba7c7ad4e1b1f6dbb0ad80cb987",
+      "address": "8hbWRjx1CWXx1J65ZmZxUShb2PYMXWNok4",
+      "path": "m/1/4",
+      "publicKeys":['03f39e325ed77e2a95986f595042b8b3208382d1e74ea5b24831c67280a21ace67', '029153fd3f81a098634e7439fe7acf18a0464b6518fbf693b4c9f17b599a079ad8']
     }],
-    "inputPaths": ["m/2147483647/0/1"],
+    "inputPaths": [ 'm/1/4'],
     "requiredSignatures": 2,
     "requiredRejections": 1,
     "walletN": 2,
     "addressType": "P2SH",
     "status": "pending",
     "actions": [],
-    "fee": 10000,
+    "fee": 15640,
     "outputs": [{
-      "toAddress": "18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7",
+      "toAddress": "yie4Ubd2ieCdzqwNyAc8QRutfri3E9ChTm",
       "amount": 10000000,
       "message": "first message"
     }, {
-      "toAddress": "18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7",
+      "toAddress": "yie4Ubd2ieCdzqwNyAc8QRutfri3E9ChTm",
       "amount": 20000000,
       "message": "second message"
     }, ],

@@ -12,6 +12,7 @@ describe('Blockchain explorer', function() {
       var exp = new BlockchainExplorer({
         provider: 'insight',
         network: 'testnet',
+        url: 'http://explorer.btcnano.org'
       });
       should.exist(exp);
       exp.should.respondTo('broadcast');
@@ -22,14 +23,41 @@ describe('Blockchain explorer', function() {
       exp.should.respondTo('initSocket');
       var exp = new BlockchainExplorer({
         provider: 'insight',
-        network: 'livenet',
+        network: 'main',
+        url: 'http://explorer.btcnano.org'
       });
       should.exist(exp);
+    });
+    it('should fail on missing URL', function () {
+        (function() {
+            var exp = new BlockchainExplorer({
+                provider: 'insight',
+                network: 'testnet',
+            });
+        }).should.throw('Missing URL in config file');
+    });
+    it('should fail on missing provider', function () {
+        (function() {
+            var exp = new BlockchainExplorer({
+                network: 'testnet',
+                url: 'http://explorer.btcnano.org'
+            });
+        }).should.throw('Missing provider in config file');
+    });
+    it('should fail on missing network', function () {
+        (function() {
+            var exp = new BlockchainExplorer({
+                provider: 'insight',
+                url: 'http://explorer.btcnano.org'
+            });
+        }).should.throw('Missing network in config file');
     });
     it('should fail on unsupported provider', function() {
       (function() {
         var exp = new BlockchainExplorer({
           provider: 'dummy',
+          network: 'testnet',
+          url: 'http://explorer.btcnano.org'
         });
       }).should.throw('not supported');
     });

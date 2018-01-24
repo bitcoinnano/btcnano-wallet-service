@@ -23,7 +23,7 @@ describe('Copayer', function() {
       should.exist(c.requestPubKeys);
       c.requestPubKeys.length.should.equal(1);
       var a1 = c.createAddress(w, true);
-      a1.address.should.equal('3AXmDe2FkWY9g5LpRaTs1U7pXKtkNm3NBf');
+      a1.address.should.equal('7bFQ3qJRZVdnfqsmhC8NLr7USsj8DXheQU');
       a1.path.should.equal('m/2/1/0');
       a1.createdOn.should.be.above(1);
       var a2 = c.createAddress(w, true);

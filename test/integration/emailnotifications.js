@@ -57,7 +57,7 @@ describe('Email notifications', function() {
                 from: 'bws@dummy.net',
                 subjectPrefix: '[test wallet]',
                 publicTxUrlTemplate: {
-                  livenet: 'https://insight.bitpay.com/tx/{{txid}}',
+                  main: 'https://insight.bitpay.com/tx/{{txid}}',
                   testnet: 'https://test-insight.bitpay.com/tx/{{txid}}',
                 },
               },
@@ -82,7 +82,7 @@ describe('Email notifications', function() {
       helpers.stubUtxos(server, wallet, [1, 1], function() {
         var txOpts = {
           outputs: [{
-            toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+            toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
             amount: 0.8e8
           }],
           feePerKb: 100e2
@@ -119,7 +119,7 @@ describe('Email notifications', function() {
       helpers.stubUtxos(server, wallet, [1, 1], function() {
         var txOpts = {
           outputs: [{
-            toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+            toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
             amount: 0.8e8
           }],
           feePerKb: 100e2
@@ -151,7 +151,7 @@ describe('Email notifications', function() {
       helpers.stubUtxos(server, wallet, [1, 1], function() {
         var txOpts = {
           outputs: [{
-            toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+            toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
             amount: 0.8e8
           }],
           feePerKb: 100e2
@@ -217,7 +217,7 @@ describe('Email notifications', function() {
       helpers.stubUtxos(server, wallet, 1, function() {
         var txOpts = {
           outputs: [{
-            toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+            toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
             amount: 0.8e8
           }],
           feePerKb: 100e2
@@ -419,7 +419,7 @@ describe('Email notifications', function() {
         helpers.stubUtxos(server, wallet, 1, function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 0.8e8
             }],
             feePerKb: 100e2
@@ -472,7 +472,7 @@ describe('Email notifications', function() {
                 from: 'bws@dummy.net',
                 subjectPrefix: '[test wallet]',
                 publicTxUrlTemplate: {
-                  livenet: 'https://insight.bitpay.com/tx/{{txid}}',
+                  main: 'https://insight.bitpay.com/tx/{{txid}}',
                   testnet: 'https://test-insight.bitpay.com/tx/{{txid}}',
                 },
               },
@@ -488,7 +488,7 @@ describe('Email notifications', function() {
         helpers.stubUtxos(server, wallet, [1, 1], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 0.8e8
             }],
             feePerKb: 100e2

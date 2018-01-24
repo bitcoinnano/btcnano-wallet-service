@@ -106,16 +106,16 @@ describe('Bitcore Node Service', function() {
         service._getConfiguration();
       }).should.throw('Unknown network');
     });
-    it('livenet local insight', function() {
+    it('main local insight', function() {
       var options = {
         node: {
-          network: bitcore.Networks.livenet,
+          network: bitcore.Networks.main,
           port: 3001
         }
       };
       var service = new Service(options);
       var config = service._getConfiguration();
-      config.blockchainExplorerOpts.livenet.should.deep.equal({
+      config.blockchainExplorerOpts.main.should.deep.equal({
         'apiPrefix': '/insight-api',
         'provider': 'insight',
         'url': 'http://localhost:3001'

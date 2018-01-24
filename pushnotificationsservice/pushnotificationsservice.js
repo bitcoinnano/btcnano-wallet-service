@@ -11,7 +11,7 @@ var PushNotificationsService = require('../lib/pushnotificationsservice');
 
 var pushNotificationsService = new PushNotificationsService();
 pushNotificationsService.start(config, function(err) {
-  if (err) throw err;
+  // if (err) throw err;
 
   log.debug('Push Notification Service started');
 });
