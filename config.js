@@ -40,12 +40,13 @@ var config = {
   blockchainExplorerOpts: {
     main: {
       provider: 'insight',
-      url: 'http://114.67.37.2:10584',
+      // url: ['http://explorer.btcnano.org', 'http://explorer_cn.btcnano.org']
+      url: 'http://explorer.btcnano.org',
       apiPrefix:'/api'
     },
     testnet: {
       provider: 'insight',
-      url: 'http://114.67.37.2:10584',
+      url: 'http://explorer_cn.btcnano.org',
       apiPrefix:'/api'
 
     },
